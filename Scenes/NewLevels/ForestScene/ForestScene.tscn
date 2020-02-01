@@ -35,11 +35,19 @@ albedo_color = Color( 0.466667, 0.631373, 0.384314, 1 )
 panorama = ExtResource( 4 )
 
 [sub_resource type="Environment" id=6]
-background_mode = 2
+background_mode = 3
 background_sky = SubResource( 5 )
+background_color = Color( 0, 0.247059, 0.333333, 1 )
+background_energy = 1.5
+ambient_light_color = Color( 0, 0.505882, 1, 1 )
+ambient_light_sky_contribution = 0.85
 tonemap_mode = 3
-tonemap_exposure = 0.5
+tonemap_exposure = 0.69
+dof_blur_far_enabled = true
+dof_blur_far_distance = 1.5
+dof_blur_far_transition = 10.0
 glow_enabled = true
+glow_bloom = 0.04
 glow_bicubic_upscale = true
 
 [sub_resource type="GIProbeData" id=10]
