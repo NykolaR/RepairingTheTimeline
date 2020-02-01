@@ -6,3 +6,7 @@ func _ready() -> void:
 
 func _body_entered(body: Node) -> void:
 	print("BRO THAT'S A WIN??!!")
+
+
+func _on_Area_input_event(camera: Node, event: InputEvent, click_position: Vector3, click_normal: Vector3, shape_idx: int) -> void:
+	print("hiiii")

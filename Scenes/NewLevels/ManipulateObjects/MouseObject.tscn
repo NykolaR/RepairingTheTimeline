@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://MouseObject.gd" type="Script" id=1]
+
+[node name="MouseObject" type="KinematicBody"]
+script = ExtResource( 1 )
+[connection signal="input_event" from="." to="." method="input_event"]

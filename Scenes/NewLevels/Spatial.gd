@@ -14,9 +14,10 @@ func _input(event: InputEvent) -> void:
 				camera_control = true
 			else:
 				camera_control = false
-	
+
 	if event is InputEventMouseMotion:
 		if camera_control:
-			rotate_y(event.speed.x * 0.00003)
+			rotate_x(-event.speed.y * 0.00003)
+			rotation.x = clamp(rotation.x, -PI / 4, PI / 4)
 		else:
 			mouse_pos = event.position

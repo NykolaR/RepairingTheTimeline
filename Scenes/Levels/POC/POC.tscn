@@ -31,24 +31,24 @@ rings = 16
 friction = 3.0
 rough = true
 
-[sub_resource type="SpatialMaterial" id=12]
+[sub_resource type="SpatialMaterial" id=8]
 emission_enabled = true
 emission = Color( 1, 0, 0, 1 )
 emission_energy = 12.56
 emission_operator = 0
 emission_on_uv2 = false
 
-[sub_resource type="BoxShape" id=8]
+[sub_resource type="BoxShape" id=9]
 extents = Vector3( 0.4, 0.4, 0.4 )
 
-[sub_resource type="BoxShape" id=9]
+[sub_resource type="BoxShape" id=10]
 
-[sub_resource type="PanoramaSky" id=10]
+[sub_resource type="PanoramaSky" id=11]
 panorama = ExtResource( 5 )
 
-[sub_resource type="Environment" id=11]
+[sub_resource type="Environment" id=12]
 background_mode = 2
-background_sky = SubResource( 10 )
+background_sky = SubResource( 11 )
 tonemap_mode = 3
 tonemap_exposure = 0.5
 glow_enabled = true
@@ -102,10 +102,10 @@ script = ExtResource( 3 )
 [node name="MeshInstance" type="MeshInstance" parent="Objects/Future/Ball" index="0"]
 layers = 2
 mesh = SubResource( 6 )
-material/0 = SubResource( 12 )
+material/0 = SubResource( 8 )
 
 [node name="CollisionShape" type="CollisionShape" parent="Objects/Future/Ball" index="1"]
-shape = SubResource( 8 )
+shape = SubResource( 9 )
 
 [node name="Area" type="Area" parent="Objects/Future/Ball" index="2"]
 
@@ -119,7 +119,7 @@ collision_mask = 4
 script = ExtResource( 4 )
 
 [node name="CollisionShape" type="CollisionShape" parent="Objects/Future/Area" index="0"]
-shape = SubResource( 9 )
+shape = SubResource( 10 )
 
 [node name="Viewport" parent="Past" index="0"]
 msaa = 1
@@ -130,7 +130,7 @@ msaa = 1
 shadow_atlas_size = 8192
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." index="3"]
-environment = SubResource( 11 )
+environment = SubResource( 12 )
 
 [node name="DirectionalLight" type="DirectionalLight" parent="." index="4"]
 transform = Transform( -0.866025, -0.25, 0.433013, 0.25, 0.533494, 0.808013, -0.433013, 0.808013, -0.399519, 0, 3, 5 )
@@ -141,3 +141,4 @@ shadow_reverse_cull_face = true
 [connection signal="mouse_entered" from="Objects/Past/Shelf/Shelf" to="Objects/Past/Shelf/Shelf" method="_mouse_entered"]
 [connection signal="mouse_exited" from="Objects/Past/Shelf/Shelf" to="Objects/Past/Shelf/Shelf" method="_mouse_exited"]
 [connection signal="body_entered" from="Objects/Future/Area" to="Objects/Future/Area" method="_body_entered"]
+[connection signal="input_event" from="Objects/Future/Area" to="Objects/Future/Area" method="_on_Area_input_event"]
