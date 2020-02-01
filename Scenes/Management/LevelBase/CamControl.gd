@@ -18,6 +18,6 @@ func _input(event: InputEvent) -> void:
 	if event is InputEventMouseMotion:
 		if camera_control:
 			print(event.speed.x)
-			rotate_y(event.speed.x * 0.001)
+			rotate_y(event.speed.x * 0.00003)
 		else:
 			mouse_pos = event.position
