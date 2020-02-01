@@ -31,7 +31,6 @@ func input_event(camera: Node, event: InputEvent, click_position: Vector3, click
 			moving = true
 
 func _mouse_entered() -> void:
-	print("en")
 	if has_node("MeshInstance"):
 		var mesh = get_node("MeshInstance") as MeshInstance
 		
@@ -40,7 +39,6 @@ func _mouse_entered() -> void:
 				mesh.material_override.emission_energy = 1
 
 func _mouse_exited() -> void:
-	print("ex")
 	if has_node("MeshInstance"):
 		var mesh = get_node("MeshInstance") as MeshInstance
 		

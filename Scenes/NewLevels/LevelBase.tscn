@@ -37,61 +37,65 @@ enabled = true
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_top = -18.0
+margin_top = -42.0
+rect_min_size = Vector2( 0, 30 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
 margin_right = 1920.0
-margin_bottom = 14.0
+margin_bottom = 30.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Control" type="Control" parent="VBoxContainer/HBoxContainer"]
-margin_right = 625.0
-margin_bottom = 14.0
+margin_right = 614.0
+margin_bottom = 30.0
 size_flags_horizontal = 3
 
 [node name="Play" type="TextureButton" parent="VBoxContainer/HBoxContainer"]
-margin_left = 629.0
-margin_right = 643.0
-margin_bottom = 14.0
-rect_min_size = Vector2( 14, 14 )
+margin_left = 618.0
+margin_right = 648.0
+margin_bottom = 30.0
+rect_min_size = Vector2( 30, 30 )
 texture_normal = ExtResource( 4 )
 expand = true
 stretch_mode = 4
 
 [node name="ProgressBar" type="ProgressBar" parent="VBoxContainer/HBoxContainer"]
-margin_left = 647.0
-margin_right = 1272.0
-margin_bottom = 14.0
+margin_left = 652.0
+margin_right = 1266.0
+margin_bottom = 30.0
 size_flags_horizontal = 3
 size_flags_vertical = 1
 max_value = 5.0
 percent_visible = false
 
 [node name="Rewind" type="TextureButton" parent="VBoxContainer/HBoxContainer"]
-margin_left = 1276.0
-margin_right = 1290.0
-margin_bottom = 14.0
-rect_min_size = Vector2( 14, 14 )
+margin_left = 1270.0
+margin_right = 1300.0
+margin_bottom = 30.0
+rect_min_size = Vector2( 30, 30 )
 rect_pivot_offset = Vector2( 7, 0 )
 texture_normal = ExtResource( 5 )
 expand = true
 stretch_mode = 4
 
 [node name="Control2" type="Control" parent="VBoxContainer/HBoxContainer"]
-margin_left = 1294.0
+margin_left = 1304.0
 margin_right = 1920.0
-margin_bottom = 14.0
+margin_bottom = 30.0
 size_flags_horizontal = 3
 
 [node name="Control" type="Control" parent="VBoxContainer"]
-margin_top = 18.0
+margin_top = 34.0
 margin_right = 1920.0
-margin_bottom = 18.0
+margin_bottom = 42.0
+rect_min_size = Vector2( 0, 8 )
 
 [node name="SimulatedTimer" type="Timer" parent="."]
 wait_time = 5.0
