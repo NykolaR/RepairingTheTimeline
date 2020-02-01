@@ -1,9 +1,10 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://Scenes/NewLevels/LevelBase.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scenes/NewLevels/ManipulateObjects/MouseMovement/MouseMovement.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Assets/lebombo_1k.hdr" type="Texture" id=3]
 [ext_resource path="res://Scenes/NewLevels/SimulatedObject/RigidBody.gd" type="Script" id=4]
+[ext_resource path="res://Scenes/NewLevels/Reactants/JankManTheFourth.tscn" type="PackedScene" id=5]
 
 [sub_resource type="SphereMesh" id=1]
 
@@ -39,7 +40,11 @@ transform = Transform( 0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, -0.2, 0.9 )
 
 [node name="RigidBody" type="RigidBody" parent="Rigids" index="0"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -1.6 )
+collision_layer = 7
+collision_mask = 7
 mode = 1
+contacts_reported = 5
+contact_monitor = true
 script = ExtResource( 4 )
 
 [node name="MeshInstance" type="MeshInstance" parent="Rigids/RigidBody" index="0"]
@@ -52,7 +57,11 @@ shape = SubResource( 2 )
 
 [node name="RigidBody2" type="RigidBody" parent="Rigids" index="1"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 1, -1.6 )
+collision_layer = 7
+collision_mask = 7
 mode = 1
+contacts_reported = 5
+contact_monitor = true
 script = ExtResource( 4 )
 
 [node name="MeshInstance" type="MeshInstance" parent="Rigids/RigidBody2" index="0"]
@@ -65,7 +74,11 @@ shape = SubResource( 2 )
 
 [node name="RigidBody3" type="RigidBody" parent="Rigids" index="2"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, 1, -1.6 )
+collision_layer = 7
+collision_mask = 7
 mode = 1
+contacts_reported = 5
+contact_monitor = true
 script = ExtResource( 4 )
 
 [node name="MeshInstance" type="MeshInstance" parent="Rigids/RigidBody3" index="0"]
@@ -86,3 +99,12 @@ material/0 = null
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." index="5"]
 environment = SubResource( 6 )
+
+[node name="JankMan4" parent="." index="9" instance=ExtResource( 5 )]
+transform = Transform( 0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, -1.49047, -0.161911, 1.50784 )
+
+[node name="JankMan5" parent="." index="10" instance=ExtResource( 5 )]
+transform = Transform( 0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0.0240555, -0.161911, 1.50784 )
+
+[node name="JankMan6" parent="." index="11" instance=ExtResource( 5 )]
+transform = Transform( 0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 1.50336, -0.161911, 1.50784 )

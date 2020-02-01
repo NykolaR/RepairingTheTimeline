@@ -2,12 +2,12 @@
 
 importer="scene"
 type="PackedScene"
-path="res://.import/JankMan2.glb-19eb801f1f1cf86b29d3f986e901494b.scn"
+path="res://.import/JankMan4.fbx-dbc7a8f9f1a9ca9afcf05724b4b46bd4.scn"
 
 [deps]
 
-source_file="res://Assets/GLTF/JankMan2.glb"
-dest_files=[ "res://.import/JankMan2.glb-19eb801f1f1cf86b29d3f986e901494b.scn" ]
+source_file="res://Assets/GLTF/JankMan4.fbx"
+dest_files=[ "res://.import/JankMan4.fbx-dbc7a8f9f1a9ca9afcf05724b4b46bd4.scn" ]
 
 [params]
 

@@ -23,5 +23,6 @@ shape = SubResource( 1 )
 
 [node name="MeshInstance" type="MeshInstance" parent="." index="1"]
 material_override = SubResource( 2 )
+cast_shadow = 2
 mesh = SubResource( 3 )
 material/0 = null

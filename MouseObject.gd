@@ -37,7 +37,7 @@ func _mouse_entered() -> void:
 		
 		if mesh:
 			if mesh.material_override is SpatialMaterial:
-				mesh.material_override.emission_energy = 2
+				mesh.material_override.emission_energy = 1
 
 func _mouse_exited() -> void:
 	print("ex")
