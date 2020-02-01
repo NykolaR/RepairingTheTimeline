@@ -12,6 +12,9 @@ func _process(delta: float) -> void:
 	$VBoxContainer/HBoxContainer/ProgressBar.value = $SimulatedTimer.wait_time - $SimulatedTimer.time_left
 
 func begin_simulation() -> void:
+	if TimeLord.is_simulating:
+		return
+	
 	TimeLord.is_simulating = true
 	get_tree().call_group("simulated", "start")
 	$SimulatedTimer.start()
