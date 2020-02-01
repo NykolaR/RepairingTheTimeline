@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=2]
 
-[sub_resource type="ArrayMesh" id=2]
+[sub_resource type="ArrayMesh" id=1]
 resource_name = "Tree"
 surfaces/0 = {
 "aabb": AABB( -0.07, -0.25, -0.07, 0.14, 0.50001, 0.14 ),
@@ -25,13 +25,13 @@ surfaces/1 = {
 "vertex_count": 66
 }
 
-[sub_resource type="SpatialMaterial" id=3]
+[sub_resource type="SpatialMaterial" id=2]
 albedo_color = Color( 0.611765, 0.458824, 0.345098, 1 )
 
-[sub_resource type="SpatialMaterial" id=4]
+[sub_resource type="SpatialMaterial" id=3]
 albedo_color = Color( 0.482353, 0.756863, 0.45098, 1 )
 
-[sub_resource type="CylinderShape" id=5]
+[sub_resource type="CylinderShape" id=4]
 radius = 0.104238
 height = 0.9
 
@@ -42,10 +42,10 @@ mode = 1
 [node name="Tree" type="MeshInstance" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7.45058e-09, 0 )
 cast_shadow = 2
-mesh = SubResource( 2 )
-material/0 = SubResource( 3 )
-material/1 = SubResource( 4 )
+mesh = SubResource( 1 )
+material/0 = SubResource( 2 )
+material/1 = SubResource( 3 )
 
 [node name="CollisionShape" type="CollisionShape" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.2, 0 )
-shape = SubResource( 5 )
+shape = SubResource( 4 )

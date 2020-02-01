@@ -22,7 +22,7 @@ func add_history() -> void:
 	get_parent().get_parent().add_child(mesh)
 	mesh.global_transform = global_transform
 	
-	if mesh_history.size() < 3:
+	if mesh_history.size() < 2:
 		mesh_history.append(mesh)
 	else:
 		var last_mesh = mesh_history.pop_front()
