@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://Scenes/NewLevels/SimulatedObject/RigidBody.gd" type="Script" id=1]
 [ext_resource path="res://Scenes/NewLevels/LevelBase.tscn" type="PackedScene" id=2]
@@ -54,8 +54,6 @@ ambient_light_color = Color( 0, 0.505882, 1, 1 )
 ambient_light_sky_contribution = 0.85
 tonemap_mode = 3
 tonemap_exposure = 0.69
-ssao_enabled = true
-ssao_quality = 2
 dof_blur_far_enabled = true
 dof_blur_far_distance = 1.5
 dof_blur_far_transition = 10.0
@@ -63,7 +61,58 @@ glow_enabled = true
 glow_bloom = 0.04
 glow_bicubic_upscale = true
 
-[sub_resource type="GIProbeData" id=9]
+[sub_resource type="StyleBoxFlat" id=9]
+bg_color = Color( 1, 1, 1, 1 )
+
+[sub_resource type="Theme" id=10]
+ProgressBar/colors/font_color = Color( 0.94, 0.94, 0.94, 1 )
+ProgressBar/colors/font_color_shadow = Color( 0, 0, 0, 1 )
+ProgressBar/fonts/font = null
+ProgressBar/icons/WhiteProgressBar = null
+ProgressBar/styles/bg = null
+ProgressBar/styles/fg = SubResource( 9 )
+
+[sub_resource type="Animation" id=11]
+length = 2.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1, 2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 0, 1, 0.0862745, 1 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:rect_size")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 1, 2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 14, 14 ), Vector2( 25, 25 ), Vector2( 14, 14 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath(".:rect_pivot_offset")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 1, 2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 7, 0 ), Vector2( 12.5, 25 ), Vector2( 7, 0 ) ]
+}
+
+[sub_resource type="GIProbeData" id=12]
 bounds = AABB( -4.35467, -3.05925, -3.67763, 8.70933, 6.1185, 7.35527 )
 cell_size = 0.0680417
 to_cell_xform = Transform( 14.6969, 0, 0, 0, 14.6969, 0, 0, 0, 14.6969, 64, 44.9614, 54.0498 )
@@ -77,13 +126,13 @@ propagation = 0.7
 simulation_time = 2.5
 
 [node name="Boulder" parent="Kinematics" index="0" instance=ExtResource( 3 )]
-transform = Transform( 0.996195, -0.0225576, -0.084186, 0, 0.965926, -0.258819, 0.0871557, 0.257834, 0.96225, 0, 0.2, 0 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.2, 0 )
 
 [node name="Boulder2" parent="Kinematics" index="1" instance=ExtResource( 3 )]
-transform = Transform( 0.819152, 0.0996005, 0.564863, 0, 0.984808, -0.173648, -0.573576, 0.142244, 0.806707, 0, 0.5, -0.8 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, -0.8 )
 
 [node name="Boulder3" parent="Kinematics" index="2" instance=ExtResource( 3 )]
-transform = Transform( 0.906308, -0.109382, -0.408218, -0.109382, 0.872302, -0.476577, 0.408218, 0.476577, 0.778609, 0, -0.4, 0.8 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.4, 0.8 )
 
 [node name="RigidBody" type="RigidBody" parent="Rigids" index="0"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -1.6 )
@@ -145,6 +194,12 @@ transform = Transform( 1, 0, 0, 0, 0.984808, -0.173648, 0, 0.173648, 0.984808, 1
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." index="5"]
 environment = SubResource( 8 )
 
+[node name="ProgressBar" parent="VBoxContainer/HBoxContainer" index="2"]
+theme = SubResource( 10 )
+
+[node name="RewindAnimationPlayer" type="AnimationPlayer" parent="VBoxContainer/HBoxContainer/Rewind" index="0"]
+anims/FlashRewind = SubResource( 11 )
+
 [node name="DirectionalLight" type="DirectionalLight" parent="." index="8"]
 transform = Transform( 0.819152, -0.286788, 0.496732, 0, 0.866025, 0.5, -0.573576, -0.409576, 0.709406, 0, 1.8, 4 )
 shadow_enabled = true
@@ -159,4 +214,4 @@ directional_shadow_max_distance = 35.0
 [node name="GIProbe" type="GIProbe" parent="." index="10"]
 visible = false
 extents = Vector3( 4.35467, 3.05925, 3.67763 )
-data = SubResource( 9 )
+data = SubResource( 12 )
