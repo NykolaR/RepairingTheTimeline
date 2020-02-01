@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Scenes/Management/LevelBase/CamControl.gd" type="Script" id=1]
 [ext_resource path="res://Scenes/NewLevels/LevelBase.gd" type="Script" id=2]
 [ext_resource path="res://Scenes/NewLevels/Spatial.gd" type="Script" id=3]
 [ext_resource path="res://Assets/Textures/play.png" type="Texture" id=4]
+[ext_resource path="res://Assets/Textures/rewind.png" type="Texture" id=5]
 
 [node name="LevelBase" type="Spatial"]
 script = ExtResource( 2 )
@@ -75,7 +76,7 @@ margin_right = 1290.0
 margin_bottom = 14.0
 rect_min_size = Vector2( 14, 14 )
 rect_pivot_offset = Vector2( 7, 0 )
-texture_normal = ExtResource( 4 )
+texture_normal = ExtResource( 5 )
 expand = true
 stretch_mode = 4
 

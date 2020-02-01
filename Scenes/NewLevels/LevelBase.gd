@@ -24,7 +24,8 @@ func _pressed() -> void:
 	begin_simulation()
 
 func simulation_timeout() -> void:
-	pass # Replace with function body.
+	get_tree().call_group("simulated", "stop")
+	set_process(false)
 
 func rewind_pressed() -> void:
 	TimeLord.is_simulating = false

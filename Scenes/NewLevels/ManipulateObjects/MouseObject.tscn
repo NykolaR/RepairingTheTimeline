@@ -5,3 +5,5 @@
 [node name="MouseObject" type="KinematicBody"]
 script = ExtResource( 1 )
 [connection signal="input_event" from="." to="." method="input_event"]
+[connection signal="mouse_entered" from="." to="." method="_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_mouse_exited"]
