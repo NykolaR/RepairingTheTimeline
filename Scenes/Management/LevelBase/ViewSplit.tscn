@@ -1,10 +1,12 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://Scenes/Management/LevelBase/CamControl.gd" type="Script" id=1]
+[ext_resource path="res://Scenes/Management/LevelBase/ViewSplit.gd" type="Script" id=2]
 
 [node name="ViewSplit" type="HBoxContainer"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+script = ExtResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -31,7 +33,8 @@ handle_input_locally = false
 render_target_update_mode = 3
 physics_object_picking = true
 
-[node name="CamControl" type="Spatial" parent="Past/Viewport"]
+[node name="CamControl" type="RemoteTransform" parent="Past/Viewport"]
+remote_path = NodePath("../../../Future/Viewport/RemoteTransform")
 script = ExtResource( 1 )
 
 [node name="Camera" type="Camera" parent="Past/Viewport/CamControl"]
@@ -51,8 +54,7 @@ size = Vector2( 958, 1080 )
 handle_input_locally = false
 render_target_update_mode = 3
 
-[node name="RemoteTransform" type="RemoteTransform" parent="Future/Viewport"]
-remote_path = NodePath("../../../Past/Viewport/CamControl")
+[node name="RemoteTransform" type="Spatial" parent="Future/Viewport"]
 
 [node name="Camera" type="Camera" parent="Future/Viewport/RemoteTransform"]
 transform = Transform( 1, 0, 0, 0, 0.866025, 0.5, 0, -0.5, 0.866025, 0, 3, 5 )

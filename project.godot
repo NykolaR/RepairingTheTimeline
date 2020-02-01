@@ -18,6 +18,10 @@ _global_script_class_icons={
 config/name="RepairingTheTimeline"
 config/icon="res://icon.png"
 
+[autoload]
+
+TimeLord="*res://TimeLord.gd"
+
 [display]
 
 window/size/width=1920

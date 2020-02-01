@@ -28,9 +28,14 @@ func _mouse_exited() -> void:
 	mouse_overlap = false
 
 func _physics_process(delta: float) -> void:
+	if TimeLord.is_simulating:
+		return
+	
 	if Input.is_action_pressed("ui_right"):
 		get_parent().move_and_collide(Vector3(1 * 0.1, 0, 0))
 	if Input.is_action_pressed("ui_left"):
 		get_parent().move_and_collide(Vector3(-1 * 0.1, 0, 0))
+	
+	#get_parent().get_parent().global_transform.origin = global_transform.origin
 	#if moving:
 	#	get_parent().move_and_slide(Vector3(movement.x * 0.01, 0, 0))
