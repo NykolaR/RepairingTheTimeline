@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://Scenes/NewLevels/SimulatedObject/RigidBody.gd" type="Script" id=1]
 [ext_resource path="res://Scenes/NewLevels/LevelBase.tscn" type="PackedScene" id=2]
@@ -71,19 +71,8 @@ ProgressBar/icons/WhiteProgressBar = null
 ProgressBar/styles/bg = null
 ProgressBar/styles/fg = SubResource( 9 )
 
-[sub_resource type="GIProbeData" id=11]
-bounds = AABB( -4.35467, -3.05925, -3.67763, 8.70933, 6.1185, 7.35527 )
-cell_size = 0.0680417
-to_cell_xform = Transform( 14.6969, 0, 0, 0, 14.6969, 0, 0, 0, 14.6969, 64, 44.9614, 54.0496 )
-dynamic_data = PoolIntArray( 0, 8, 128, 128, 128, 1, 0, 100, 121, 0, 67, 108, 97, 115, 115, 0, -1, -1, -1, -1, -1, -1, -1, -1, 0, 0, 8355711, 0 )
-dynamic_range = 4
-energy = 0.23
-bias = 1.5
-normal_bias = 0.0
-propagation = 0.7
-
 [node name="ForestScene" instance=ExtResource( 2 )]
-simulation_time = 2.5
+simulation_time = 3.0
 
 [node name="Boulder" parent="Kinematics" index="0" instance=ExtResource( 3 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.2, 0 )
@@ -170,8 +159,3 @@ directional_shadow_split_3 = 0.3
 directional_shadow_blend_splits = true
 directional_shadow_normal_bias = 0.03
 directional_shadow_max_distance = 30.0
-
-[node name="GIProbe" type="GIProbe" parent="." index="10"]
-visible = false
-extents = Vector3( 4.35467, 3.05925, 3.67763 )
-data = SubResource( 11 )

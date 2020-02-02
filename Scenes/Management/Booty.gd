@@ -3,7 +3,7 @@ extends Node
 
 
 var level : int = 0
-var levels : Array = []
+var levels : Array = ["res://Scenes/NewLevels/ForestScene/ForestScene.tscn"]
 
 signal progress
 
@@ -12,8 +12,17 @@ func _ready() -> void:
 	pass # Replace with function body.
 
 func _play_game() -> void:
+	print("gplay")
 	$AnimationPlayer.play("load")
 	yield(self, "progress")
 	$MainMenu.visible = false
-	var level_one = null
+	var level_one = load(levels[0])
+	$LevelHolder.add_child(level_one.instance())
+	level_one.connect("next_level", self, "next_level")
+
+func next_level() -> void:
+	level += 1
+	if level == levels.size():
+		get_tree().quit()
 	
+	# load next level

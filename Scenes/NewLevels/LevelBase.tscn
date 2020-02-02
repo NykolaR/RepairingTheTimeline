@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://Scenes/Management/LevelBase/CamControl.gd" type="Script" id=1]
 [ext_resource path="res://Scenes/NewLevels/LevelBase.gd" type="Script" id=2]
@@ -45,6 +45,52 @@ tracks/2/keys = {
 "update": 0,
 "values": [ Vector2( 7, 0 ), Vector2( 12.5, 25 ), Vector2( 7, 0 ) ]
 }
+
+[sub_resource type="Animation" id=6]
+resource_name = "FadeWin"
+tracks/0/type = "value"
+tracks/0/path = NodePath("CenterContainer:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=7]
+resource_name = "WinBob"
+length = 1.6
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("CenterContainer:rect_rotation")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.4, 0.8, 1.2 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ 0.0, 1.0, 0.0, -1.0 ]
+}
+
+[sub_resource type="DynamicFontData" id=2]
+font_path = "res://Assets/Fonts/Munro/munro.ttf"
+
+[sub_resource type="DynamicFont" id=3]
+size = 128
+font_data = SubResource( 2 )
+
+[sub_resource type="DynamicFontData" id=4]
+font_path = "res://Assets/Fonts/Munro/munro.ttf"
+
+[sub_resource type="DynamicFont" id=5]
+size = 64
+font_data = SubResource( 4 )
 
 [node name="LevelBase" type="Spatial"]
 script = ExtResource( 2 )
@@ -143,6 +189,52 @@ rect_min_size = Vector2( 0, 8 )
 [node name="SimulatedTimer" type="Timer" parent="."]
 wait_time = 5.0
 one_shot = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/FadeWin = SubResource( 6 )
+anims/WinBob = SubResource( 7 )
+next/FadeWin = "WinBob"
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+modulate = Color( 1, 1, 1, 0 )
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -528.0
+rect_pivot_offset = Vector2( 264, 540 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer"]
+margin_left = 44.0
+margin_top = 356.0
+margin_right = 484.0
+margin_bottom = 723.0
+size_flags_horizontal = 3
+
+[node name="Win" type="Label" parent="CenterContainer/VBoxContainer"]
+margin_right = 440.0
+margin_bottom = 291.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_fonts/font = SubResource( 3 )
+text = "TIMELINE
+REPAIRED"
+align = 1
+valign = 1
+
+[node name="NextLevel" type="Label" parent="CenterContainer/VBoxContainer"]
+margin_top = 295.0
+margin_right = 440.0
+margin_bottom = 367.0
+mouse_filter = 0
+size_flags_horizontal = 3
+custom_fonts/font = SubResource( 5 )
+text = "NEXT LEVEL"
+align = 1
+valign = 1
 [connection signal="pressed" from="VBoxContainer/HBoxContainer/Play" to="." method="_pressed"]
 [connection signal="pressed" from="VBoxContainer/HBoxContainer/Rewind" to="." method="rewind_pressed"]
 [connection signal="timeout" from="SimulatedTimer" to="." method="simulation_timeout"]
+[connection signal="gui_input" from="CenterContainer/VBoxContainer/NextLevel" to="." method="nextlevel_pressed"]
