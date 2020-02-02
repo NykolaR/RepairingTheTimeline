@@ -136,6 +136,7 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.4, 0.8 )
 
 [node name="RigidBody" type="RigidBody" parent="Rigids" index="0"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -1.6 )
+collision_layer = 3
 mode = 1
 script = ExtResource( 1 )
 
@@ -149,6 +150,7 @@ shape = SubResource( 3 )
 
 [node name="RigidBody2" type="RigidBody" parent="Rigids" index="1"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 1, -1.6 )
+collision_layer = 3
 mode = 1
 script = ExtResource( 1 )
 
@@ -162,6 +164,7 @@ shape = SubResource( 3 )
 
 [node name="RigidBody3" type="RigidBody" parent="Rigids" index="2"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, 1, -1.6 )
+collision_layer = 3
 mode = 1
 script = ExtResource( 1 )
 
