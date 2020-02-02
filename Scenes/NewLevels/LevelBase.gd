@@ -12,6 +12,7 @@ signal reset_bodies
 export (float, 1, 10) var simulation_time : float = 5
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	$CRTDistortion.visible = false
 	pitch_shift = Audio.pitch_shift
 	$SimulatedTimer.wait_time = simulation_time
 	TimeLord.is_simulating = false
