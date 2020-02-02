@@ -1,0 +1,102 @@
+[gd_scene load_steps=13 format=2]
+
+[ext_resource path="res://Scenes/NewLevels/LevelBase.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Assets/aircraft_workshop_01_1k.hdr" type="Texture" id=2]
+[ext_resource path="res://Scenes/NewLevels/SimulatedObject/RigidBody.gd" type="Script" id=4]
+[ext_resource path="res://Scenes/NewLevels/Reactants/JankManTheFourth.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Scenes/NewLevels/Genocide/Rampy.tscn" type="PackedScene" id=6]
+
+[sub_resource type="SphereMesh" id=1]
+radius = 0.2
+height = 0.4
+
+[sub_resource type="SphereShape" id=2]
+radius = 0.2
+
+[sub_resource type="BoxShape" id=3]
+
+[sub_resource type="CubeMesh" id=4]
+
+[sub_resource type="BoxShape" id=5]
+
+[sub_resource type="PanoramaSky" id=6]
+panorama = ExtResource( 2 )
+
+[sub_resource type="Environment" id=7]
+background_mode = 2
+background_sky = SubResource( 6 )
+
+[node name="Geno" instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.38065, 0 )
+simulation_time = 6.0
+
+[node name="Rampy2" parent="Kinematics" index="0" instance=ExtResource( 6 )]
+transform = Transform( 1.06173e-14, 6.51683e-08, -0.4, 0.4, -6.51683e-08, 0, -6.51683e-08, -0.4, -6.51683e-08, 1.47071, -0.171382, 0.875819 )
+
+[node name="RigidBody" type="RigidBody" parent="Rigids" index="0"]
+transform = Transform( 2, 0, 0, 0, 2, 0, 0, 0, 2, -0.00709534, 0.969675, -1.59056 )
+collision_layer = 2
+collision_mask = 7
+mode = 1
+contacts_reported = 5
+contact_monitor = true
+script = ExtResource( 4 )
+
+[node name="MeshInstance" type="MeshInstance" parent="Rigids/RigidBody" index="0"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.021039, 0, 0.0145855 )
+mesh = SubResource( 1 )
+material/0 = null
+
+[node name="CollisionShape" type="CollisionShape" parent="Rigids/RigidBody" index="1"]
+shape = SubResource( 2 )
+
+[node name="StaticBody" type="StaticBody" parent="." index="2"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.39364, -0.0749879, 2.9845 )
+collision_mask = 0
+
+[node name="CollisionShape2" type="CollisionShape" parent="StaticBody" index="0"]
+transform = Transform( 3, 0, 0, 0, 0.1, 0, 0, 0, 2, 0, -2.10574, 1.78948 )
+shape = SubResource( 3 )
+
+[node name="MeshInstance" type="MeshInstance" parent="StaticBody/CollisionShape2" index="0"]
+transform = Transform( 1, 0, 0, 0, 1, -4.76837e-07, 0, 3.72529e-09, 1, 0, 0, 0 )
+mesh = SubResource( 4 )
+material/0 = null
+
+[node name="Spatial" type="Spatial" parent="StaticBody" index="1"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.75409, 0.0749879, -2.9845 )
+
+[node name="JankMan4" parent="StaticBody/Spatial" index="0" instance=ExtResource( 5 )]
+transform = Transform( 0.0920505, 0, 0.0390731, 0, 0.1, 0, -0.0390731, 0, 0.0920505, -3.20741, -1.90056, 4.57735 )
+
+[node name="JankMan6" parent="StaticBody/Spatial" index="1" instance=ExtResource( 5 )]
+transform = Transform( -0.00100001, 0, -0.099995, 0, 0.1, 0, 0.099995, 0, -0.00100001, -3.68124, -1.88886, 4.36653 )
+
+[node name="JankMan7" parent="StaticBody/Spatial" index="2" instance=ExtResource( 5 )]
+transform = Transform( -0.0894942, 0, 0.0446182, 0, 0.1, 0, -0.0446182, 0, -0.0894942, -3.16232, -1.88886, 4.20782 )
+
+[node name="Statics" parent="." index="3"]
+collision_mask = 0
+
+[node name="CollisionShape" type="CollisionShape" parent="Statics" index="0"]
+transform = Transform( 3, 0, 0, 0, 0.0939693, -0.68404, 0, 0.034202, 1.87939, 0, 0, 0 )
+shape = SubResource( 5 )
+__meta__ = {
+"_editor_description_": ""
+}
+
+[node name="MeshInstance" type="MeshInstance" parent="Statics/CollisionShape" index="0"]
+transform = Transform( 1, 0, 0, 0, 1, -4.76837e-07, 0, 3.72529e-09, 1, 0, 0, 0 )
+mesh = SubResource( 4 )
+material/0 = null
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." index="6"]
+environment = SubResource( 7 )
+
+[node name="InterpolatedCamera" parent="." index="7"]
+transform = Transform( 1, 0, 0, 0, 0.866025, 0.5, 0, -0.5, 0.866025, 0.000136375, 3.01851, 4.98931 )
+
+[node name="JankMen" type="Spatial" parent="." index="10"]
+
+[node name="JankMan5" parent="JankMen" index="0" instance=ExtResource( 5 )]
+transform = Transform( 0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0.0240555, -0.161911, 1.50784 )
