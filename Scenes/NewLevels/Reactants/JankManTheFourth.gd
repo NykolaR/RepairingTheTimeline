@@ -54,6 +54,7 @@ func _on_Area_body_entered(body):
 		body.linear_velocity *= 0.7
 		body.linear_velocity.y += 2
 	alive = false
+	get_tree().call_group("level", "time_fractured")
 
 func add_history() -> void:
 	var corpse = jankCorpse.instance()
