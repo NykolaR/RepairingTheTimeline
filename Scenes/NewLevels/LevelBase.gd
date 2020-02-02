@@ -25,6 +25,19 @@ func _pressed() -> void:
 	begin_simulation()
 
 func simulation_timeout() -> void:
+	var alive_count : int = 0
+	
+	var reactants : Array = get_tree().get_nodes_in_group("reactant")
+	for reactant in reactants:
+		if reactant.alive:
+			alive_count += 1
+	
+	print(alive_count, ", ", reactants.size())
+	if alive_count == reactants.size():
+		print("you win!")
+	else:
+		print("you lossssed")
+	
 	get_tree().call_group("simulated", "stop")
 	set_process(false)
 
