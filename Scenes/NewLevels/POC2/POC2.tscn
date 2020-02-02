@@ -7,6 +7,8 @@
 [ext_resource path="res://Scenes/NewLevels/Reactants/JankManTheFourth.tscn" type="PackedScene" id=5]
 
 [sub_resource type="SphereMesh" id=1]
+radius = 0.2
+height = 0.4
 
 [sub_resource type="SphereShape" id=2]
 radius = 0.2
@@ -27,7 +29,8 @@ glow_enabled = true
 glow_bicubic_upscale = true
 
 [node name="POC2" instance=ExtResource( 1 )]
-simulation_time = 2.5
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.38065, 0 )
+simulation_time = 3.0
 
 [node name="MouseMovement" parent="Kinematics" index="0" instance=ExtResource( 2 )]
 transform = Transform( 0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0.2, 0 )
@@ -48,7 +51,6 @@ contact_monitor = true
 script = ExtResource( 4 )
 
 [node name="MeshInstance" type="MeshInstance" parent="Rigids/RigidBody" index="0"]
-transform = Transform( 0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0, 0 )
 mesh = SubResource( 1 )
 material/0 = null
 
@@ -65,7 +67,6 @@ contact_monitor = true
 script = ExtResource( 4 )
 
 [node name="MeshInstance" type="MeshInstance" parent="Rigids/RigidBody2" index="0"]
-transform = Transform( 0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0, 0 )
 mesh = SubResource( 1 )
 material/0 = null
 
@@ -82,7 +83,6 @@ contact_monitor = true
 script = ExtResource( 4 )
 
 [node name="MeshInstance" type="MeshInstance" parent="Rigids/RigidBody3" index="0"]
-transform = Transform( 0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0, 0 )
 mesh = SubResource( 1 )
 material/0 = null
 
@@ -100,11 +100,13 @@ material/0 = null
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." index="5"]
 environment = SubResource( 6 )
 
-[node name="JankMan4" parent="." index="9" instance=ExtResource( 5 )]
+[node name="JankMen" type="Spatial" parent="." index="9"]
+
+[node name="JankMan4" parent="JankMen" index="0" instance=ExtResource( 5 )]
 transform = Transform( 0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, -1.49047, -0.161911, 1.50784 )
 
-[node name="JankMan5" parent="." index="10" instance=ExtResource( 5 )]
+[node name="JankMan5" parent="JankMen" index="1" instance=ExtResource( 5 )]
 transform = Transform( 0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0.0240555, -0.161911, 1.50784 )
 
-[node name="JankMan6" parent="." index="11" instance=ExtResource( 5 )]
+[node name="JankMan6" parent="JankMen" index="2" instance=ExtResource( 5 )]
 transform = Transform( 0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 1.50336, -0.161911, 1.50784 )

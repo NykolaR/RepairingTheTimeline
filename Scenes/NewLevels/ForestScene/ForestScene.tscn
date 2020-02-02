@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://Scenes/NewLevels/SimulatedObject/RigidBody.gd" type="Script" id=1]
 [ext_resource path="res://Scenes/NewLevels/LevelBase.tscn" type="PackedScene" id=2]
@@ -71,46 +71,6 @@ ProgressBar/fonts/font = null
 ProgressBar/icons/WhiteProgressBar = null
 ProgressBar/styles/bg = null
 ProgressBar/styles/fg = SubResource( 9 )
-
-[sub_resource type="Animation" id=11]
-length = 2.0
-loop = true
-tracks/0/type = "value"
-tracks/0/path = NodePath(".:modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 1, 2 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
-"update": 0,
-"values": [ Color( 1, 1, 1, 1 ), Color( 0, 1, 0.0862745, 1 ), Color( 1, 1, 1, 1 ) ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath(".:rect_size")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0, 1, 2 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
-"update": 0,
-"values": [ Vector2( 14, 14 ), Vector2( 25, 25 ), Vector2( 14, 14 ) ]
-}
-tracks/2/type = "value"
-tracks/2/path = NodePath(".:rect_pivot_offset")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/keys = {
-"times": PoolRealArray( 0, 1, 2 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
-"update": 0,
-"values": [ Vector2( 7, 0 ), Vector2( 12.5, 25 ), Vector2( 7, 0 ) ]
-}
 
 [sub_resource type="GIProbeData" id=12]
 bounds = AABB( -4.35467, -3.05925, -3.67763, 8.70933, 6.1185, 7.35527 )
@@ -200,9 +160,6 @@ environment = SubResource( 8 )
 
 [node name="ProgressBar" parent="VBoxContainer/HBoxContainer" index="2"]
 theme = SubResource( 10 )
-
-[node name="RewindAnimationPlayer" parent="VBoxContainer/HBoxContainer/Rewind" index="0"]
-anims/FlashRewind = SubResource( 11 )
 
 [node name="DirectionalLight" type="DirectionalLight" parent="." index="8"]
 transform = Transform( 0.819152, -0.286788, 0.496732, 0, 0.866025, 0.5, -0.573576, -0.409576, 0.709406, 0, 1.8, 4 )
