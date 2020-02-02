@@ -65,17 +65,17 @@ glow_bloom = 0.04
 glow_bicubic_upscale = true
 
 [sub_resource type="GIProbeData" id=9]
-bounds = AABB( -4.35467, -3.05925, -3.67763, 8.70933, 6.1185, 7.35527 )
+bounds = AABB( -4.35467, -3.05925, -3.67763, 8.70934, 6.1185, 7.35526 )
 cell_size = 0.0680417
-to_cell_xform = Transform( 14.6969, 0, 0, 0, 14.6969, 0, 0, 0, 14.6969, 64, 44.9614, 54.0498 )
-dynamic_data = PoolIntArray( 0, 8, 128, 128, 128, 1, 0, 0, 2, 12, 0, 0, 8, 0, 1709216432, 0, -1, -1, -1, -1, -1, -1, -1, -1, 0, 0, 8355711, 0 )
+to_cell_xform = Transform( 14.6969, 0, 0, 0, 14.6969, 0, 0, 0, 14.6969, 64, 44.9614, 54.0496 )
+dynamic_data = PoolIntArray( 0, 8, 128, 128, 128, 1, 0, 100, 121, 0, 67, 108, 97, 115, 115, 0, -1, -1, -1, -1, -1, -1, -1, -1, 0, 0, 8355711, 0 )
 dynamic_range = 4
+energy = 0.23
 bias = 1.5
 normal_bias = 0.0
 propagation = 0.7
 
 [node name="ForestScene" instance=ExtResource( 2 )]
-simulation_time = 4.0
 
 [node name="Boulder" parent="Kinematics" index="0" instance=ExtResource( 3 )]
 transform = Transform( 0.996195, -0.0225576, -0.084186, 0, 0.965926, -0.258819, 0.0871557, 0.257834, 0.96225, 0.0776385, 0.2, 0 )
@@ -175,4 +175,5 @@ directional_shadow_max_distance = 35.0
 [node name="GIProbe" type="GIProbe" parent="." index="10"]
 visible = false
 extents = Vector3( 4.35467, 3.05925, 3.67763 )
+energy = 0.23
 data = SubResource( 9 )
