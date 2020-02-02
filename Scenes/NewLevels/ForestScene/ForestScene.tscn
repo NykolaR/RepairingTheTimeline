@@ -159,3 +159,5 @@ directional_shadow_split_3 = 0.3
 directional_shadow_blend_splits = true
 directional_shadow_normal_bias = 0.03
 directional_shadow_max_distance = 30.0
+
+[editable path="CRTDistortion"]

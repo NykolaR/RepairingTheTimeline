@@ -11,20 +11,20 @@
 radius = 0.2
 height = 0.4
 
-[sub_resource type="SpatialMaterial" id=9]
+[sub_resource type="SpatialMaterial" id=2]
 albedo_color = Color( 0.356863, 0.415686, 0.466667, 1 )
 metallic = 0.77
 metallic_specular = 0.58
 roughness = 0.25
 
-[sub_resource type="SphereShape" id=2]
+[sub_resource type="SphereShape" id=3]
 radius = 0.2
 
-[sub_resource type="BoxShape" id=3]
+[sub_resource type="BoxShape" id=4]
 
-[sub_resource type="CubeMesh" id=4]
+[sub_resource type="CubeMesh" id=5]
 
-[sub_resource type="SpatialMaterial" id=10]
+[sub_resource type="SpatialMaterial" id=6]
 albedo_color = Color( 0.901961, 0.815686, 0.815686, 1 )
 metallic = 0.27
 metallic_specular = 0.31
@@ -32,14 +32,14 @@ roughness_texture = ExtResource( 3 )
 roughness_texture_channel = 4
 uv1_triplanar = true
 
-[sub_resource type="BoxShape" id=5]
+[sub_resource type="BoxShape" id=7]
 
-[sub_resource type="PanoramaSky" id=6]
+[sub_resource type="PanoramaSky" id=8]
 panorama = ExtResource( 2 )
 
-[sub_resource type="Environment" id=7]
+[sub_resource type="Environment" id=9]
 background_mode = 3
-background_sky = SubResource( 6 )
+background_sky = SubResource( 8 )
 background_color = Color( 0.623529, 0.615686, 0.568627, 1 )
 background_energy = 2.83
 ambient_light_color = Color( 0.635294, 0.537255, 0.537255, 1 )
@@ -48,8 +48,7 @@ fog_enabled = true
 dof_blur_far_enabled = true
 dof_blur_far_distance = 4.59
 
-[sub_resource type="Animation" id=8]
-resource_name = "TimeError"
+[sub_resource type="Animation" id=10]
 
 [node name="Geno" instance=ExtResource( 1 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.38065, 0 )
@@ -70,10 +69,10 @@ script = ExtResource( 4 )
 [node name="MeshInstance" type="MeshInstance" parent="Rigids/RigidBody" index="0"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.021039, 0, 0.0145855 )
 mesh = SubResource( 1 )
-material/0 = SubResource( 9 )
+material/0 = SubResource( 2 )
 
 [node name="CollisionShape" type="CollisionShape" parent="Rigids/RigidBody" index="1"]
-shape = SubResource( 2 )
+shape = SubResource( 3 )
 
 [node name="StaticBody" type="StaticBody" parent="." index="2"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.39364, -0.0749879, 2.9845 )
@@ -81,12 +80,12 @@ collision_mask = 0
 
 [node name="CollisionShape2" type="CollisionShape" parent="StaticBody" index="0"]
 transform = Transform( 3, 0, 0, 0, 0.1, 0, 0, 0, 2, 0, -2.10574, 1.78948 )
-shape = SubResource( 3 )
+shape = SubResource( 4 )
 
 [node name="MeshInstance" type="MeshInstance" parent="StaticBody/CollisionShape2" index="0"]
 transform = Transform( 1, 0, 0, 0, 1, -4.76837e-07, 0, 3.72529e-09, 1, 0, 0, 0 )
-mesh = SubResource( 4 )
-material/0 = SubResource( 10 )
+mesh = SubResource( 5 )
+material/0 = SubResource( 6 )
 
 [node name="Spatial" type="Spatial" parent="StaticBody" index="1"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.75409, 0.0749879, -2.9845 )
@@ -105,18 +104,18 @@ collision_mask = 0
 
 [node name="CollisionShape" type="CollisionShape" parent="Statics" index="0"]
 transform = Transform( 3, 0, 0, 0, 0.0939693, -0.68404, 0, 0.034202, 1.87939, 0, 0, 0 )
-shape = SubResource( 5 )
+shape = SubResource( 7 )
 __meta__ = {
 "_editor_description_": ""
 }
 
 [node name="MeshInstance" type="MeshInstance" parent="Statics/CollisionShape" index="0"]
 transform = Transform( 1, 0, 0, 0, 1, -9.53674e-07, 0, 7.45058e-09, 1, 0, 0, 0 )
-mesh = SubResource( 4 )
-material/0 = SubResource( 10 )
+mesh = SubResource( 5 )
+material/0 = SubResource( 6 )
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." index="6"]
-environment = SubResource( 7 )
+environment = SubResource( 9 )
 
 [node name="InterpolatedCamera" parent="." index="7"]
 transform = Transform( 1, 0, 0, 0, 0.866025, 0.5, 0, -0.5, 0.866025, 0.000136375, 3.01851, 4.98931 )
@@ -127,4 +126,6 @@ transform = Transform( 1, 0, 0, 0, 0.866025, 0.5, 0, -0.5, 0.866025, 0.000136375
 transform = Transform( 0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0.0240555, -0.161911, 1.50784 )
 
 [node name="AnimationPlayer" parent="." index="11"]
-anims/TimeError = SubResource( 8 )
+anims/TimeError = SubResource( 10 )
+
+[editable path="CRTDistortion"]
