@@ -4,11 +4,9 @@ var jankCorpse = preload("res://Scenes/NewLevels/POC2/JankCorpse.tscn")
 var blueMaterial = preload("res://Assets/blue.tres")
 var mesh_history = []
 var alive
-var stopped
 var clone
 
 func _enter_tree():
-	stopped = false
 	alive = true
 	add_to_group("simulated")
 	add_to_group("reactant")
@@ -17,7 +15,6 @@ func _enter_tree():
 		
 
 func stop():
-	stopped = true
 	$Armature.physical_bones_stop_simulation()	
 	$Armature/Sphere.global_transform = $Armature/Torso.global_transform
 	#$Armature/Torso.weight = 0
@@ -40,8 +37,6 @@ func stop():
 	#$Armature/LegR.set("mode", RigidBody.MODE_STATIC)
 
 func reset():
-	if not stopped:
-		return
 	add_history()
 	get_parent().add_child(clone)
 	clone.mesh_history = mesh_history

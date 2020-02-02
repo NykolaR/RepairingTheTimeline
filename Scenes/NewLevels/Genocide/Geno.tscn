@@ -1,7 +1,8 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://Scenes/NewLevels/LevelBase.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Assets/aircraft_workshop_01_1k.hdr" type="Texture" id=2]
+[ext_resource path="res://Scenes/NewLevels/Genocide/DiamondPlate01_disp.jpg" type="Texture" id=3]
 [ext_resource path="res://Scenes/NewLevels/SimulatedObject/RigidBody.gd" type="Script" id=4]
 [ext_resource path="res://Scenes/NewLevels/Reactants/JankManTheFourth.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Scenes/NewLevels/Genocide/Rampy.tscn" type="PackedScene" id=6]
@@ -10,6 +11,12 @@
 radius = 0.2
 height = 0.4
 
+[sub_resource type="SpatialMaterial" id=9]
+albedo_color = Color( 0.356863, 0.415686, 0.466667, 1 )
+metallic = 0.77
+metallic_specular = 0.58
+roughness = 0.25
+
 [sub_resource type="SphereShape" id=2]
 radius = 0.2
 
@@ -17,14 +24,29 @@ radius = 0.2
 
 [sub_resource type="CubeMesh" id=4]
 
+[sub_resource type="SpatialMaterial" id=10]
+albedo_color = Color( 0.901961, 0.815686, 0.815686, 1 )
+metallic = 0.27
+metallic_specular = 0.31
+roughness_texture = ExtResource( 3 )
+roughness_texture_channel = 4
+uv1_triplanar = true
+
 [sub_resource type="BoxShape" id=5]
 
 [sub_resource type="PanoramaSky" id=6]
 panorama = ExtResource( 2 )
 
 [sub_resource type="Environment" id=7]
-background_mode = 2
+background_mode = 3
 background_sky = SubResource( 6 )
+background_color = Color( 0.623529, 0.615686, 0.568627, 1 )
+background_energy = 2.83
+ambient_light_color = Color( 0.635294, 0.537255, 0.537255, 1 )
+ambient_light_energy = 0.39
+fog_enabled = true
+dof_blur_far_enabled = true
+dof_blur_far_distance = 4.59
 
 [sub_resource type="Animation" id=8]
 resource_name = "TimeError"
@@ -48,7 +70,7 @@ script = ExtResource( 4 )
 [node name="MeshInstance" type="MeshInstance" parent="Rigids/RigidBody" index="0"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.021039, 0, 0.0145855 )
 mesh = SubResource( 1 )
-material/0 = null
+material/0 = SubResource( 9 )
 
 [node name="CollisionShape" type="CollisionShape" parent="Rigids/RigidBody" index="1"]
 shape = SubResource( 2 )
@@ -64,7 +86,7 @@ shape = SubResource( 3 )
 [node name="MeshInstance" type="MeshInstance" parent="StaticBody/CollisionShape2" index="0"]
 transform = Transform( 1, 0, 0, 0, 1, -4.76837e-07, 0, 3.72529e-09, 1, 0, 0, 0 )
 mesh = SubResource( 4 )
-material/0 = null
+material/0 = SubResource( 10 )
 
 [node name="Spatial" type="Spatial" parent="StaticBody" index="1"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.75409, 0.0749879, -2.9845 )
@@ -89,9 +111,9 @@ __meta__ = {
 }
 
 [node name="MeshInstance" type="MeshInstance" parent="Statics/CollisionShape" index="0"]
-transform = Transform( 1, 0, 0, 0, 1, -4.76837e-07, 0, 3.72529e-09, 1, 0, 0, 0 )
+transform = Transform( 1, 0, 0, 0, 1, -9.53674e-07, 0, 7.45058e-09, 1, 0, 0, 0 )
 mesh = SubResource( 4 )
-material/0 = null
+material/0 = SubResource( 10 )
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." index="6"]
 environment = SubResource( 7 )
