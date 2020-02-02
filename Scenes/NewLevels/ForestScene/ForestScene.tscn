@@ -78,13 +78,13 @@ propagation = 0.7
 simulation_time = 4.0
 
 [node name="Boulder" parent="Kinematics" index="0" instance=ExtResource( 3 )]
-transform = Transform( 0.996195, -0.0225576, -0.084186, 0, 0.965926, -0.258819, 0.0871557, 0.257834, 0.96225, 0, 0.2, 0 )
+transform = Transform( 0.996195, -0.0225576, -0.084186, 0, 0.965926, -0.258819, 0.0871557, 0.257834, 0.96225, 0.0776385, 0.2, 0 )
 
 [node name="Boulder2" parent="Kinematics" index="1" instance=ExtResource( 3 )]
-transform = Transform( -0.0871554, 0.172987, 0.98106, 0, 0.984808, -0.173648, -0.996194, -0.0151346, -0.0858323, 0, 0.5, -0.8 )
+transform = Transform( -0.0871554, 0.172987, 0.98106, 0, 0.984808, -0.173648, -0.996194, -0.0151346, -0.0858323, -0.27787, 0.5, -0.8 )
 
 [node name="Boulder3" parent="Kinematics" index="2" instance=ExtResource( 3 )]
-transform = Transform( 0.981081, -0.111717, -0.158114, 0.109381, 0.993724, -0.0234233, 0.159739, 0.00568508, 0.987143, 0, -0.4, 0.8 )
+transform = Transform( 0.981081, -0.111717, -0.158114, 0.109381, 0.993724, -0.0234233, 0.159739, 0.00568508, 0.987143, -0.0788753, -0.4, 0.8 )
 
 [node name="RigidBody" type="RigidBody" parent="Rigids" index="0"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -1.6 )

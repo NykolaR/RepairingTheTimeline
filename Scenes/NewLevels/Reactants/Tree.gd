@@ -10,8 +10,16 @@ func _body_entered(body: Node) -> void:
 
 func stop() -> void:
 	set("mode", RigidBody.MODE_STATIC)
+	
+	if alive:
+		# blue
+		pass
+	else:
+		# red
+		pass
 
 func reset() -> void:
 	$Particles.emitting = false
 	transform = initial_transform
+	set("mode", RigidBody.MODE_STATIC)
 	alive = true
