@@ -67,4 +67,6 @@ func flash_rewind() -> void:
 
 func nextlevel_pressed(event: InputEvent) -> void:
 	if stage_won:
-		emit_signal("next_level")
+		if event is InputEventMouseButton:
+			if event.pressed and event.button_index == BUTTON_LEFT:
+				emit_signal("next_level")
