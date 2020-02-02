@@ -21,6 +21,7 @@ func _play_game() -> void:
 	$AudioStreamPlayer2.play()
 	$AnimationPlayer.play("load")
 	yield(self, "progress")
+	$CRTDistortion.visible = false
 	$MainMenu.visible = false
 	var level_one = load(levels[0])
 	var level_one_node = level_one.instance()
@@ -38,6 +39,7 @@ func next_level() -> void:
 		
 		yield($AnimationPlayer, "animation_finished")
 		
+		$CRTDistortion.visible = true
 		$Credits.play("credits")
 		yield($Credits, "animation_finished")
 		
