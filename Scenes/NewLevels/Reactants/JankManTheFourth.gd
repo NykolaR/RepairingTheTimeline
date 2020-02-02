@@ -3,15 +3,15 @@ extends Spatial
 var jankCorpse = preload("res://Scenes/NewLevels/POC2/JankCorpse.tscn")
 var blueMaterial = preload("res://Assets/blue.tres")
 var mesh_history = []
-var safe
+var alive
 var stopped
 var clone
 
 func _enter_tree():
 	stopped = false
-	safe = true
-	
+	alive = true
 	add_to_group("simulated")
+	add_to_group("reactant")
 	clone = duplicate(7)
 	$Armature/Head001_end/Area.connect("body_entered",self,"_on_Area_body_entered")
 		
@@ -53,13 +53,13 @@ func _on_Area_body_entered(body):
 	if body is RigidBody:
 		body.linear_velocity *= 0.7
 		body.linear_velocity.y += 2
-	safe = false
+	alive = false
 
 func add_history() -> void:
 	var corpse = jankCorpse.instance()
 	get_parent().add_child(corpse)
 	corpse.global_transform = $Armature/Sphere.global_transform
-	if safe:
+	if alive:
 		corpse.get_node("MeshInstance").set_material_override(blueMaterial)
 	
 	if mesh_history.size() < 2:

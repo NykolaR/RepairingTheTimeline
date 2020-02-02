@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://Scenes/NewLevels/LevelBase.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Assets/aircraft_workshop_01_1k.hdr" type="Texture" id=2]
@@ -25,6 +25,9 @@ panorama = ExtResource( 2 )
 [sub_resource type="Environment" id=7]
 background_mode = 2
 background_sky = SubResource( 6 )
+
+[sub_resource type="Animation" id=8]
+resource_name = "TimeError"
 
 [node name="Geno" instance=ExtResource( 1 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.38065, 0 )
@@ -100,3 +103,6 @@ transform = Transform( 1, 0, 0, 0, 0.866025, 0.5, 0, -0.5, 0.866025, 0.000136375
 
 [node name="JankMan5" parent="JankMen" index="0" instance=ExtResource( 5 )]
 transform = Transform( 0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0.0240555, -0.161911, 1.50784 )
+
+[node name="AnimationPlayer" parent="." index="11"]
+anims/TimeError = SubResource( 8 )
