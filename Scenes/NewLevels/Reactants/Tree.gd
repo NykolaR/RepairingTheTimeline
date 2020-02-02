@@ -7,6 +7,7 @@ func _body_entered(body: Node) -> void:
 		set("mode", RigidBody.MODE_RIGID)
 		alive = false
 		$Particles.emitting = true
+		get_tree().call_group("level", "time_fractured")
 
 func stop() -> void:
 	set("mode", RigidBody.MODE_STATIC)

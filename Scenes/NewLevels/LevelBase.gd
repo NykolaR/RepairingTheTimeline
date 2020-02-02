@@ -31,6 +31,9 @@ func begin_simulation() -> void:
 	$SimulatedTimer.start()
 	set_process(true)
 
+func time_fractured() -> void:
+	pass
+
 func _pressed() -> void:
 	begin_simulation()
 
