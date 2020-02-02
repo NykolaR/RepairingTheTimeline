@@ -3,6 +3,7 @@ extends Spatial
 signal next_level
 
 var stage_won : bool = false
+var stage_lost : bool = false
 
 export (float, 1, 10) var simulation_time : float = 5
 # Called when the node enters the scene tree for the first time.
@@ -25,14 +26,17 @@ func _process(delta: float) -> void:
 func begin_simulation() -> void:
 	if TimeLord.is_simulating or stage_won:
 		return
-	
+	$AnimationPlayer.seek(0, true)
+	$AnimationPlayer.stop()
 	TimeLord.is_simulating = true
 	get_tree().call_group("simulated", "start")
 	$SimulatedTimer.start()
 	set_process(true)
 
 func time_fractured() -> void:
-	pass
+	if not stage_lost:
+		$AnimationPlayer.play("LoseDisplay")
+		stage_lost = true
 
 func _pressed() -> void:
 	begin_simulation()
@@ -55,7 +59,9 @@ func simulation_timeout() -> void:
 func rewind_pressed() -> void:
 	if stage_won:
 		return
-	
+	stage_lost = false
+	$AnimationPlayer.seek(0, true)
+	$AnimationPlayer.stop()
 	$VBoxContainer/HBoxContainer/Rewind/RewindAnimationPlayer.seek(0, true)
 	$VBoxContainer/HBoxContainer/Rewind/RewindAnimationPlayer.stop(true)
 	TimeLord.is_simulating = false
