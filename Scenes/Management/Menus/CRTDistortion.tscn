@@ -96,11 +96,11 @@ noise = SubResource( 3 )
 
 [sub_resource type="ShaderMaterial" id=2]
 shader = SubResource( 1 )
-shader_param/dispAmt = 0.004
+shader_param/dispAmt = 0.0
 shader_param/dispScale = 0.5
-shader_param/abberationAmt = 0.008
+shader_param/abberationAmt = 0.0
 shader_param/timeLine = 0.01
-shader_param/scanSpeed = 10.0
+shader_param/scanSpeed = 0.0
 shader_param/scanOffset = 14.0
 shader_param/screenCurvature = 10.0
 shader_param/curvatureDistance = 0.0
@@ -109,6 +109,7 @@ shader_param/displace = SubResource( 4 )
 [node name="CRTDistortion" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+mouse_filter = 2
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -117,3 +118,4 @@ __meta__ = {
 material = SubResource( 2 )
 anchor_right = 1.0
 anchor_bottom = 1.0
+mouse_filter = 2

@@ -5,11 +5,13 @@ signal next_level
 var stage_won : bool = false
 var stage_lost : bool = false
 
+signal reset_bodies
+
 export (float, 1, 10) var simulation_time : float = 5
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	$SimulatedTimer.wait_time = simulation_time
-	$VBoxContainer/HBoxContainer/ProgressBar.max_value = simulation_time
+	#$VBoxContainer/HBoxContainer/ProgressBar.max_value = simulation_time
 	set_process(false)
 	begin_simulation()
 	flash_rewind()
@@ -21,7 +23,7 @@ func _input(event: InputEvent) -> void:
 		rewind_pressed()
 
 func _process(delta: float) -> void:
-	$VBoxContainer/HBoxContainer/ProgressBar.value = $SimulatedTimer.wait_time - $SimulatedTimer.time_left
+	$VBoxContainer/HBoxContainer/ProgressBar.value = ($SimulatedTimer.wait_time - $SimulatedTimer.time_left) / $SimulatedTimer.wait_time
 
 func begin_simulation() -> void:
 	if TimeLord.is_simulating or stage_won:
@@ -57,18 +59,24 @@ func simulation_timeout() -> void:
 	set_process(false)
 
 func rewind_pressed() -> void:
-	if stage_won:
+	if stage_won or $SimulatedTimer.time_left > 0:
 		return
+	
 	stage_lost = false
+	$SimulatedTimer.stop()
+	set_process(false)
+	$RewindAnimation.play("Rewind")
+	yield(self, "reset_bodies")
 	$AnimationPlayer.seek(0, true)
 	$AnimationPlayer.stop()
+	get_tree().call_group("simulated", "reset")
+	yield($RewindAnimation, "animation_finished")
+	
 	$VBoxContainer/HBoxContainer/Rewind/RewindAnimationPlayer.seek(0, true)
 	$VBoxContainer/HBoxContainer/Rewind/RewindAnimationPlayer.stop(true)
+	
 	TimeLord.is_simulating = false
-	get_tree().call_group("simulated", "reset")
-	$SimulatedTimer.stop()
 	$VBoxContainer/HBoxContainer/ProgressBar.value = 0
-	set_process(false)
 
 func flash_rewind() -> void:
 	$VBoxContainer/HBoxContainer/Rewind/RewindAnimationPlayer.play("FlashRewind")
