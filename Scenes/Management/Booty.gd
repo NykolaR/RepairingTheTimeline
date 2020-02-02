@@ -17,8 +17,9 @@ func _play_game() -> void:
 	yield(self, "progress")
 	$MainMenu.visible = false
 	var level_one = load(levels[0])
-	$LevelHolder.add_child(level_one.instance())
-	level_one.connect("next_level", self, "next_level")
+	var level_one_node = level_one.instance()
+	$LevelHolder.add_child(level_one_node)
+	level_one_node.connect("next_level", self, "next_level")
 
 func next_level() -> void:
 	level += 1
