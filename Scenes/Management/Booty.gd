@@ -2,7 +2,7 @@ extends Node
 
 var level : int = 0
 var levels : Array = [
-	"res://Scenes/NewLevels/Genocide/Geno.tscn",
+	"res://Scenes/NewLevels/Cat/Cat.tscn",
 	"res://Scenes/NewLevels/ForestScene/ForestScene.tscn",
 	"res://Scenes/NewLevels/Genocide/Geno.tscn"
 ]
@@ -30,7 +30,25 @@ func _play_game() -> void:
 func next_level() -> void:
 	level += 1
 	if level == levels.size():
-		get_tree().quit()
+		$AnimationPlayer.play("load")
+		yield(self, "progress")
+		
+		for child in $LevelHolder.get_children():
+			$LevelHolder.remove_child(child)
+		
+		yield($AnimationPlayer, "animation_finished")
+		
+		$Credits.play("credits")
+		yield($Credits, "animation_finished")
+		
+		$AnimationPlayer.play("load")
+		yield(self, "progress")
+		
+		$MainMenu.visible = true
+		
+		yield($AnimationPlayer, "animation_finished")
+		
+		$MainMenu.active = false
 		return
 	
 	# load next level

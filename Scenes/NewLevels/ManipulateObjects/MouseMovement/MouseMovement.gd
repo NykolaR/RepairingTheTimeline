@@ -19,3 +19,6 @@ func movement(move : Vector2) -> bool:
 
 func play_sound(body: Node) -> void:
 	$AudioStreamPlayer3D.play()
+
+func _on_Area_body_entered(body: Node) -> void:
+	$AnimationPlayer.play("eat")

@@ -25,19 +25,19 @@ surfaces/0 = {
 [sub_resource type="SpatialMaterial" id=2]
 albedo_texture = ExtResource( 8 )
 
-[sub_resource type="SphereShape" id=7]
+[sub_resource type="SphereShape" id=3]
 radius = 0.2
 
-[sub_resource type="BoxShape" id=3]
+[sub_resource type="BoxShape" id=4]
 
-[sub_resource type="CubeMesh" id=4]
+[sub_resource type="CubeMesh" id=5]
 
-[sub_resource type="PanoramaSky" id=5]
+[sub_resource type="PanoramaSky" id=6]
 panorama = ExtResource( 3 )
 
-[sub_resource type="Environment" id=6]
+[sub_resource type="Environment" id=7]
 background_mode = 2
-background_sky = SubResource( 5 )
+background_sky = SubResource( 6 )
 tonemap_mode = 3
 tonemap_exposure = 0.5
 glow_enabled = true
@@ -71,32 +71,32 @@ __meta__ = {
 }
 
 [node name="CollisionShape" type="CollisionShape" parent="Rigids/RigidBody3" index="1"]
-shape = SubResource( 7 )
+shape = SubResource( 3 )
 
 [node name="StaticBody" type="StaticBody" parent="." index="2"]
 
 [node name="CollisionShape2" type="CollisionShape" parent="StaticBody" index="0"]
 transform = Transform( 0.5, 0, 0, 0, 0.0984808, -0.347296, 0, 0.0173648, 1.96962, 0, 0, 0 )
-shape = SubResource( 3 )
+shape = SubResource( 4 )
 
 [node name="MeshInstance" type="MeshInstance" parent="StaticBody/CollisionShape2" index="0"]
 transform = Transform( 1, 0, 0, 0, 1, -4.76837e-07, 0, 3.72529e-09, 1, -0.00022459, 0.0797744, -0.00840344 )
-mesh = SubResource( 4 )
+mesh = SubResource( 5 )
 material/0 = null
 
 [node name="CollisionShape" type="CollisionShape" parent="Statics" index="0"]
 transform = Transform( 2, 0, 0, 0, 0.0984808, -0.0868241, 0, 0.0173648, 0.492404, -1.5185, 0, 0 )
-shape = SubResource( 3 )
+shape = SubResource( 4 )
 
 [node name="MeshInstance" type="MeshInstance" parent="Statics/CollisionShape" index="0"]
 transform = Transform( 1, 0, 0, 0, 1, -9.53674e-07, 0, 3.72529e-09, 1, -0.00022459, 0.0797744, -0.00840344 )
-mesh = SubResource( 4 )
+mesh = SubResource( 5 )
 material/0 = null
 
 [node name="Vase" parent="Reactants" index="0" instance=ExtResource( 6 )]
 transform = Transform( 0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, -0.0343664, -0.129892, 1.79607 )
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." index="6"]
-environment = SubResource( 6 )
+environment = SubResource( 7 )
 
 [editable path="CRTDistortion"]
