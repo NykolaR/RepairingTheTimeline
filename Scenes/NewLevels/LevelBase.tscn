@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://Scenes/Management/LevelBase/CamControl.gd" type="Script" id=1]
 [ext_resource path="res://Scenes/NewLevels/LevelBase.gd" type="Script" id=2]
@@ -46,7 +46,7 @@ tracks/2/keys = {
 "values": [ Vector2( 7, 0 ), Vector2( 12.5, 25 ), Vector2( 7, 0 ) ]
 }
 
-[sub_resource type="Animation" id=6]
+[sub_resource type="Animation" id=2]
 resource_name = "FadeWin"
 tracks/0/type = "value"
 tracks/0/path = NodePath("CenterContainer:modulate")
@@ -61,7 +61,50 @@ tracks/0/keys = {
 "values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
 }
 
-[sub_resource type="Animation" id=7]
+[sub_resource type="Animation" id=8]
+resource_name = "LoseDisplay"
+tracks/0/type = "bezier"
+tracks/0/path = NodePath("TopContainer/Lose:modulate:r")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"points": PoolRealArray( 0.756863, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 1 )
+}
+tracks/1/type = "bezier"
+tracks/1/path = NodePath("TopContainer/Lose:modulate:g")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"points": PoolRealArray( 0.756863, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 1 )
+}
+tracks/2/type = "bezier"
+tracks/2/path = NodePath("TopContainer/Lose:modulate:b")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"points": PoolRealArray( 0.752941, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 1 )
+}
+tracks/3/type = "bezier"
+tracks/3/path = NodePath("TopContainer/Lose:modulate:a")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"points": PoolRealArray( 0, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 1 )
+}
+
+[sub_resource type="Animation" id=3]
 resource_name = "WinBob"
 length = 1.6
 loop = true
@@ -78,19 +121,19 @@ tracks/0/keys = {
 "values": [ 0.0, 1.0, 0.0, -1.0 ]
 }
 
-[sub_resource type="DynamicFontData" id=2]
-font_path = "res://Assets/Fonts/Munro/munro.ttf"
-
-[sub_resource type="DynamicFont" id=3]
-size = 128
-font_data = SubResource( 2 )
-
 [sub_resource type="DynamicFontData" id=4]
 font_path = "res://Assets/Fonts/Munro/munro.ttf"
 
 [sub_resource type="DynamicFont" id=5]
-size = 64
+size = 128
 font_data = SubResource( 4 )
+
+[sub_resource type="DynamicFontData" id=6]
+font_path = "res://Assets/Fonts/Munro/munro.ttf"
+
+[sub_resource type="DynamicFont" id=7]
+size = 64
+font_data = SubResource( 6 )
 
 [node name="LevelBase" type="Spatial"]
 script = ExtResource( 2 )
@@ -191,8 +234,9 @@ wait_time = 5.0
 one_shot = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/FadeWin = SubResource( 6 )
-anims/WinBob = SubResource( 7 )
+anims/FadeWin = SubResource( 2 )
+anims/LoseDisplay = SubResource( 8 )
+anims/WinBob = SubResource( 3 )
 next/FadeWin = "WinBob"
 
 [node name="CenterContainer" type="CenterContainer" parent="."]
@@ -218,7 +262,7 @@ margin_right = 440.0
 margin_bottom = 291.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
-custom_fonts/font = SubResource( 3 )
+custom_fonts/font = SubResource( 5 )
 text = "TIMELINE
 REPAIRED"
 align = 1
@@ -230,10 +274,37 @@ margin_right = 440.0
 margin_bottom = 367.0
 mouse_filter = 0
 size_flags_horizontal = 3
-custom_fonts/font = SubResource( 5 )
+custom_fonts/font = SubResource( 7 )
 text = "NEXT LEVEL"
 align = 1
 valign = 1
+
+[node name="TopContainer" type="CenterContainer" parent="."]
+margin_left = 500.0
+margin_right = 1400.0
+margin_bottom = 300.0
+rect_pivot_offset = Vector2( 264, 540 )
+__meta__ = {
+"_edit_use_anchors_": false,
+"_editor_description_": ""
+}
+
+[node name="Lose" type="Label" parent="TopContainer"]
+modulate = Color( 1, 0, 0, 1 )
+margin_left = 191.0
+margin_top = 4.0
+margin_right = 708.0
+margin_bottom = 295.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_fonts/font = SubResource( 5 )
+text = "TIMELINE
+FRACTURED"
+align = 1
+valign = 1
+__meta__ = {
+"_editor_description_": ""
+}
 [connection signal="pressed" from="VBoxContainer/HBoxContainer/Play" to="." method="_pressed"]
 [connection signal="pressed" from="VBoxContainer/HBoxContainer/Rewind" to="." method="rewind_pressed"]
 [connection signal="timeout" from="SimulatedTimer" to="." method="simulation_timeout"]

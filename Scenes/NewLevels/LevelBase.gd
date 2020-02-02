@@ -42,10 +42,9 @@ func simulation_timeout() -> void:
 		if reactant.alive:
 			alive_count += 1
 	
-	if not alive_count == reactants.size():
+	if alive_count == reactants.size():
 		stage_won = true
 		$AnimationPlayer.play("FadeWin")
-		return
 	
 	get_tree().call_group("simulated", "stop")
 	set_process(false)
