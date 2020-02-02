@@ -21,3 +21,4 @@ func _input(event: InputEvent) -> void:
 			rotation.y = clamp(rotation.y, -0.9, 0.9)
 		else:
 			mouse_pos = event.position
+

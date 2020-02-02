@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Scenes/Management/Booty.gd" type="Script" id=1]
 [ext_resource path="res://Scenes/Management/Menus/MainMenu.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Assets/Audio/Music/mainsong_session_loop.ogg" type="AudioStream" id=3]
+[ext_resource path="res://Scenes/Management/Menus/CRTDistortion.tscn" type="PackedScene" id=4]
 
 [sub_resource type="Animation" id=1]
 resource_name = "load"
@@ -59,4 +60,12 @@ __meta__ = {
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 3 )
 autoplay = true
+
+[node name="CRTDistortion" parent="." instance=ExtResource( 4 )]
+mouse_filter = 2
+
+[node name="ColorRect" parent="CRTDistortion" index="0"]
+mouse_filter = 2
 [connection signal="play_game" from="MainMenu" to="." method="_play_game"]
+
+[editable path="CRTDistortion"]
