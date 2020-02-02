@@ -16,3 +16,6 @@ func movement(move : Vector2) -> bool:
 	#move_and_collide(movement_vector.normalized() * move.x * 0.0001)
 	
 	return false
+
+func play_sound(body: Node) -> void:
+	$AudioStreamPlayer3D.play()

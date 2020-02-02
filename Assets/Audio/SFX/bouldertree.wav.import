@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/bouldertree.wav-17685f4a89c3cf965a73538d708e4866.sample"
+
+[deps]
+
+source_file="res://Assets/Audio/SFX/bouldertree.wav"
+dest_files=[ "res://.import/bouldertree.wav-17685f4a89c3cf965a73538d708e4866.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

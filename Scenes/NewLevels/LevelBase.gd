@@ -5,11 +5,14 @@ signal next_level
 var stage_won : bool = false
 var stage_lost : bool = false
 
+export var pitch_shift : AudioEffectPitchShift
+
 signal reset_bodies
 
 export (float, 1, 10) var simulation_time : float = 5
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	pitch_shift = Audio.pitch_shift
 	$SimulatedTimer.wait_time = simulation_time
 	TimeLord.is_simulating = false
 	#$VBoxContainer/HBoxContainer/ProgressBar.max_value = simulation_time
