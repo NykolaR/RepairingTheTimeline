@@ -7,6 +7,8 @@
 [ext_resource path="res://Scenes/NewLevels/Reactants/JankManTheFourth.tscn" type="PackedScene" id=5]
 
 [sub_resource type="SphereMesh" id=1]
+radius = 0.2
+height = 0.4
 
 [sub_resource type="SphereShape" id=2]
 radius = 0.2
@@ -49,7 +51,6 @@ contact_monitor = true
 script = ExtResource( 4 )
 
 [node name="MeshInstance" type="MeshInstance" parent="Rigids/RigidBody" index="0"]
-transform = Transform( 0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0, 0 )
 mesh = SubResource( 1 )
 material/0 = null
 
@@ -66,7 +67,6 @@ contact_monitor = true
 script = ExtResource( 4 )
 
 [node name="MeshInstance" type="MeshInstance" parent="Rigids/RigidBody2" index="0"]
-transform = Transform( 0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0, 0 )
 mesh = SubResource( 1 )
 material/0 = null
 
@@ -83,7 +83,6 @@ contact_monitor = true
 script = ExtResource( 4 )
 
 [node name="MeshInstance" type="MeshInstance" parent="Rigids/RigidBody3" index="0"]
-transform = Transform( 0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0, 0 )
 mesh = SubResource( 1 )
 material/0 = null
 

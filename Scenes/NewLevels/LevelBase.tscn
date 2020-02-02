@@ -1,10 +1,50 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Scenes/Management/LevelBase/CamControl.gd" type="Script" id=1]
 [ext_resource path="res://Scenes/NewLevels/LevelBase.gd" type="Script" id=2]
 [ext_resource path="res://Scenes/NewLevels/Spatial.gd" type="Script" id=3]
 [ext_resource path="res://Assets/Textures/play.png" type="Texture" id=4]
 [ext_resource path="res://Assets/Textures/rewind.png" type="Texture" id=5]
+
+[sub_resource type="Animation" id=11]
+length = 2.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1, 2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 0, 1, 0.0862745, 1 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:rect_size")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 1, 2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 14, 14 ), Vector2( 25, 25 ), Vector2( 14, 14 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath(".:rect_pivot_offset")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 1, 2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 7, 0 ), Vector2( 12.5, 25 ), Vector2( 7, 0 ) ]
+}
 
 [node name="LevelBase" type="Spatial"]
 script = ExtResource( 2 )
@@ -84,6 +124,9 @@ rect_pivot_offset = Vector2( 7, 0 )
 texture_normal = ExtResource( 5 )
 expand = true
 stretch_mode = 4
+
+[node name="RewindAnimationPlayer" type="AnimationPlayer" parent="VBoxContainer/HBoxContainer/Rewind"]
+anims/FlashRewind = SubResource( 11 )
 
 [node name="Control2" type="Control" parent="VBoxContainer/HBoxContainer"]
 margin_left = 1304.0
