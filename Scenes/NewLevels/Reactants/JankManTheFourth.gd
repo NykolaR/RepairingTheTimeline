@@ -1,13 +1,10 @@
 extends Spatial
 
-var redMaterial = preload("res://Assets/red.tres")
+var jankCorpse = preload("res://Scenes/NewLevels/POC2/JankCorpse.tscn")
 var blueMaterial = preload("res://Assets/blue.tres")
 var mesh_history = []
 var safe
 var stopped
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
 var clone
 
 func _enter_tree():
@@ -18,14 +15,11 @@ func _enter_tree():
 	clone = duplicate(7)
 	$Armature/Head001_end/Area.connect("body_entered",self,"_on_Area_body_entered")
 		
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	 pass
 
 func stop():
 	stopped = true
 	$Armature.physical_bones_stop_simulation()	
-	$Armature/Sphere.global_transform = $Armature.get_node("Torso").global_transform
+	$Armature/Sphere.global_transform = $Armature/Torso.global_transform
 	#$Armature/Torso.weight = 0
 	#$Armature/Head.weight = 0
 	#$Armature/ArmL.weight = 0
@@ -51,29 +45,31 @@ func reset():
 	add_history()
 	get_parent().add_child(clone)
 	clone.mesh_history = mesh_history
-	remove_from_group("simulated")
+	mesh_history = []
+	queue_free()
 
 func _on_Area_body_entered(body):
 	$Armature.physical_bones_start_simulation() # Replace with function body
+	if body is RigidBody:
+		body.linear_velocity *= 0.7
+		body.linear_velocity.y += 2
 	safe = false
 
 func add_history() -> void:
-	# Get the mesh node to duplicate so that no physics is enabled.
+	var corpse = jankCorpse.instance()
+	get_parent().add_child(corpse)
+	corpse.global_transform = $Armature/Sphere.global_transform
 	if safe:
-		$Armature/Sphere.set_material_override(blueMaterial)
-	else:
-		$Armature/Sphere.set_material_override(redMaterial)
-	$Armature/Torso.queue_free()
-	$Armature/Head.queue_free()
-	$Armature/ArmL.queue_free()
-	$Armature/ArmR.queue_free()
-	$Armature/LegL.queue_free()
-	$Armature/LegR.queue_free()
+		corpse.get_node("MeshInstance").set_material_override(blueMaterial)
 	
 	if mesh_history.size() < 2:
-		mesh_history.append(self)
+		mesh_history.append(corpse)
 	else:
 		var last_mesh = mesh_history.pop_front()
-		get_parent().get_parent().remove_child(last_mesh)
 		last_mesh.queue_free()
-		mesh_history.append(self)
+		mesh_history.append(corpse)
+
+#func reparent (child, new_parent):
+#	child.get_parent().remove_child(child)
+#	new_parent.add_child(child)
+#	child.set_owner(new_parent)
