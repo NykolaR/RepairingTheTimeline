@@ -4,7 +4,6 @@ extends Node
 
 var level : int = 0
 var levels : Array = [
-	"res://Scenes/NewLevels/Genocide/Geno.tscn",
 	"res://Scenes/NewLevels/ForestScene/ForestScene.tscn",
 	"res://Scenes/NewLevels/Genocide/Geno.tscn"
 ]

@@ -11,8 +11,8 @@ export (float, 1, 10) var simulation_time : float = 5
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	$SimulatedTimer.wait_time = simulation_time
+	TimeLord.is_simulating = false
 	#$VBoxContainer/HBoxContainer/ProgressBar.max_value = simulation_time
-	set_process(false)
 	begin_simulation()
 	flash_rewind()
 
@@ -28,6 +28,7 @@ func _process(delta: float) -> void:
 func begin_simulation() -> void:
 	if TimeLord.is_simulating or stage_won:
 		return
+	
 	$AnimationPlayer.seek(0, true)
 	$AnimationPlayer.stop()
 	TimeLord.is_simulating = true
