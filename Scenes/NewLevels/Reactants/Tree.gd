@@ -2,7 +2,6 @@ extends "res://Scenes/NewLevels/SimulatedObject/Base.gd"
 
 var alive : bool = true
 
-
 func _body_entered(body: Node) -> void:
 	if body.is_in_group("simulated"):
 		set("mode", RigidBody.MODE_RIGID)
