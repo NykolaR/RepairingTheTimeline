@@ -291,7 +291,7 @@ __meta__ = {
 }
 
 [node name="Lose" type="Label" parent="TopContainer"]
-modulate = Color( 1, 0, 0, 1 )
+modulate = Color( 0.756863, 0.756863, 0.752941, 0 )
 margin_left = 191.0
 margin_top = 4.0
 margin_right = 708.0

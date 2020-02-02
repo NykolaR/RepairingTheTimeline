@@ -86,8 +86,8 @@ void fragment() {
 }"
 
 [sub_resource type="OpenSimplexNoise" id=3]
-seed = 2875
-period = 0.1
+seed = 2947
+period = 1.0
 
 [sub_resource type="NoiseTexture" id=4]
 width = 1920
