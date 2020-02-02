@@ -201,7 +201,7 @@ environment = SubResource( 8 )
 [node name="ProgressBar" parent="VBoxContainer/HBoxContainer" index="2"]
 theme = SubResource( 10 )
 
-[node name="RewindAnimationPlayer" type="AnimationPlayer" parent="VBoxContainer/HBoxContainer/Rewind" index="0"]
+[node name="RewindAnimationPlayer" parent="VBoxContainer/HBoxContainer/Rewind" index="0"]
 anims/FlashRewind = SubResource( 11 )
 
 [node name="DirectionalLight" type="DirectionalLight" parent="." index="8"]
