@@ -1,6 +1,7 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Scenes/NewLevels/Reactants/Tree.gd" type="Script" id=1]
+[ext_resource path="res://Assets/Audio/SFX/bouldertree.wav" type="AudioStream" id=2]
 
 [sub_resource type="ArrayMesh" id=1]
 resource_name = "Tree"
@@ -96,4 +97,9 @@ visibility_aabb = AABB( -17.1969, -18.5111, -21.7277, 34.3938, 37.0221, 43.4555 
 local_coords = false
 process_material = SubResource( 7 )
 draw_pass_1 = SubResource( 8 )
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource( 2 )
+unit_db = -12.0
+unit_size = 4.4
 [connection signal="body_entered" from="Area" to="." method="_body_entered"]

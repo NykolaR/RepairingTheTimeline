@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=20 format=2]
 
 [ext_resource path="res://Scenes/Management/LevelBase/CamControl.gd" type="Script" id=1]
 [ext_resource path="res://Scenes/NewLevels/LevelBase.gd" type="Script" id=2]
@@ -6,6 +6,21 @@
 [ext_resource path="res://Assets/Textures/play.png" type="Texture" id=4]
 [ext_resource path="res://Assets/Textures/rewind.png" type="Texture" id=5]
 [ext_resource path="res://Scenes/Management/Menus/CRTDistortion.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Assets/Audio/SFX/timeline_fractured2.wav" type="AudioStream" id=7]
+
+[sub_resource type="AudioEffectPitchShift" id=12]
+pitch_scale = 0.33
+
+[sub_resource type="StyleBoxFlat" id=10]
+bg_color = Color( 1, 1, 1, 1 )
+
+[sub_resource type="Theme" id=11]
+ProgressBar/colors/font_color = Color( 0.94, 0.94, 0.94, 1 )
+ProgressBar/colors/font_color_shadow = Color( 0, 0, 0, 1 )
+ProgressBar/fonts/font = null
+ProgressBar/icons/WhiteProgressBar = null
+ProgressBar/styles/bg = null
+ProgressBar/styles/fg = SubResource( 10 )
 
 [sub_resource type="Animation" id=1]
 length = 2.0
@@ -64,6 +79,7 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id=3]
 resource_name = "LoseDisplay"
+length = 2.0
 tracks/0/type = "bezier"
 tracks/0/path = NodePath("TopContainer/Lose:modulate:r")
 tracks/0/interp = 1
@@ -103,6 +119,20 @@ tracks/3/enabled = true
 tracks/3/keys = {
 "points": PoolRealArray( 0, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0 ),
 "times": PoolRealArray( 0, 1 )
+}
+tracks/4/type = "audio"
+tracks/4/path = NodePath("Fracture")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"clips": [ {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource( 7 )
+} ],
+"times": PoolRealArray( 0 )
 }
 
 [sub_resource type="Animation" id=4]
@@ -212,11 +242,24 @@ tracks/5/keys = {
 "update": 1,
 "values": [ true, false ]
 }
+tracks/6/type = "value"
+tracks/6/path = NodePath(".:pitch_shift:pitch_scale")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0, 0.3, 1, 1.7, 2 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ 0.33, 2.0, 3.0, 2.0, 0.33 ]
+}
 
 [node name="LevelBase" type="Spatial" groups=[
 "level",
 ]]
 script = ExtResource( 2 )
+pitch_shift = SubResource( 12 )
 
 [node name="Kinematics" type="Spatial" parent="."]
 
@@ -281,6 +324,7 @@ margin_right = 1266.0
 margin_bottom = 30.0
 size_flags_horizontal = 3
 size_flags_vertical = 1
+theme = SubResource( 11 )
 max_value = 1.0
 value = 1.0
 percent_visible = false
@@ -391,7 +435,10 @@ __meta__ = {
 anims/Rewind = SubResource( 9 )
 
 [node name="CRTDistortion" parent="." instance=ExtResource( 6 )]
-visible = false
+
+[node name="Fracture" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 7 )
+volume_db = -6.0
 [connection signal="pressed" from="VBoxContainer/HBoxContainer/Play" to="." method="_pressed"]
 [connection signal="pressed" from="VBoxContainer/HBoxContainer/Rewind" to="." method="rewind_pressed"]
 [connection signal="timeout" from="SimulatedTimer" to="." method="simulation_timeout"]

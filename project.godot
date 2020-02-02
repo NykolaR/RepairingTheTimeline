@@ -22,6 +22,7 @@ config/icon="res://icon.png"
 [autoload]
 
 TimeLord="*res://TimeLord.gd"
+Audio="*res://AudioAutoload.gd"
 
 [display]
 

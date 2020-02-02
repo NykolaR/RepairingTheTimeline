@@ -4,6 +4,7 @@ var alive : bool = true
 
 func _body_entered(body: Node) -> void:
 	if body.is_in_group("simulated"):
+		$AudioStreamPlayer3D.play()
 		set("mode", RigidBody.MODE_RIGID)
 		alive = false
 		$Particles.emitting = true

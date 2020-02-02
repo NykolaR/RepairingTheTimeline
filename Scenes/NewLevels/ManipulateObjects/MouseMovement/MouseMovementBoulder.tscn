@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Scenes/NewLevels/ManipulateObjects/MouseMovement/MouseMovement.gd" type="Script" id=1]
 [ext_resource path="res://Scenes/NewLevels/ManipulateObjects/MouseObject.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Assets/Audio/SFX/boulderboulder.wav" type="AudioStream" id=3]
 
 [sub_resource type="BoxShape" id=1]
 extents = Vector3( 0.2, 0.2, 0.2 )
@@ -29,6 +30,9 @@ surfaces/0 = {
 "vertex_count": 252
 }
 
+[sub_resource type="BoxShape" id=4]
+extents = Vector3( 0.25, 0.25, 0.25 )
+
 [node name="Boulder" instance=ExtResource( 2 )]
 script = ExtResource( 1 )
 
@@ -40,3 +44,16 @@ material_override = SubResource( 2 )
 cast_shadow = 2
 mesh = SubResource( 3 )
 material/0 = null
+
+[node name="Area" type="Area" parent="." index="2"]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape" type="CollisionShape" parent="Area" index="0"]
+shape = SubResource( 4 )
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="." index="3"]
+stream = ExtResource( 3 )
+unit_db = -12.0
+unit_size = 6.0
+[connection signal="body_entered" from="Area" to="." method="play_sound"]

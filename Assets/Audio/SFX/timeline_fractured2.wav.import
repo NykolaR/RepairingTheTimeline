@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/timeline_fractured2.wav-931d592acd4d78bf317a7b6c6f254fbe.sample"
+
+[deps]
+
+source_file="res://Assets/Audio/SFX/timeline_fractured2.wav"
+dest_files=[ "res://.import/timeline_fractured2.wav-931d592acd4d78bf317a7b6c6f254fbe.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

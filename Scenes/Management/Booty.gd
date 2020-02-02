@@ -1,7 +1,5 @@
 extends Node
 
-
-
 var level : int = 0
 var levels : Array = [
 	"res://Scenes/NewLevels/Genocide/Geno.tscn",
@@ -13,10 +11,14 @@ signal progress
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass # Replace with function body.
+	Audio.pitch_shift.pitch_scale = 0.33
+	#Audio.distortion.drive = 0.0
+	#Audio.lowpass.cutoff_hz = 20500
 
 func _play_game() -> void:
-	print("gplay")
+	$AudioStreamPlayer.volume_db = 0
+	
+	$AudioStreamPlayer2.play()
 	$AnimationPlayer.play("load")
 	yield(self, "progress")
 	$MainMenu.visible = false
