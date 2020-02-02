@@ -1,12 +1,13 @@
 extends Spatial
 
 export (float, 1, 10) var simulation_time : float = 5
-
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	$SimulatedTimer.wait_time = simulation_time
 	$VBoxContainer/HBoxContainer/ProgressBar.max_value = simulation_time
 	set_process(false)
+	begin_simulation()
+	flash_rewind()
 
 func _process(delta: float) -> void:
 	$VBoxContainer/HBoxContainer/ProgressBar.value = $SimulatedTimer.wait_time - $SimulatedTimer.time_left
@@ -41,8 +42,14 @@ func simulation_timeout() -> void:
 	set_process(false)
 
 func rewind_pressed() -> void:
+	$VBoxContainer/HBoxContainer/Rewind/RewindAnimationPlayer.seek(0, true)
+	$VBoxContainer/HBoxContainer/Rewind/RewindAnimationPlayer.stop(true)
 	TimeLord.is_simulating = false
 	get_tree().call_group("simulated", "reset")
 	$SimulatedTimer.stop()
 	$VBoxContainer/HBoxContainer/ProgressBar.value = 0
 	set_process(false)
+
+func flash_rewind() -> void:
+	$VBoxContainer/HBoxContainer/Rewind/RewindAnimationPlayer.play("FlashRewind")
+	
