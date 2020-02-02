@@ -1,14 +1,17 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://Assets/Audio/Music/mainsong_session_loop.ogg" type="AudioStream" id=1]
+[ext_resource path="res://Scenes/Management/Menus/MainMenu.gd" type="Script" id=2]
 
 [sub_resource type="DynamicFontData" id=1]
-font_path = "res://Assets/Fonts/Nevis/nevis.ttf"
+font_path = "res://Assets/Fonts/Munro/munro.ttf"
 
 [sub_resource type="DynamicFont" id=2]
 size = 128
 font_data = SubResource( 1 )
 
 [sub_resource type="DynamicFontData" id=3]
-font_path = "res://Assets/Fonts/Nevis/nevis.ttf"
+font_path = "res://Assets/Fonts/Munro/munro.ttf"
 
 [sub_resource type="DynamicFont" id=4]
 size = 64
@@ -17,6 +20,7 @@ font_data = SubResource( 3 )
 [node name="MainMenu" type="HBoxContainer"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+script = ExtResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -50,6 +54,7 @@ size_flags_vertical = 3
 margin_top = 271.0
 margin_right = 958.0
 margin_bottom = 538.0
+mouse_filter = 0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 custom_fonts/font = SubResource( 4 )
@@ -61,6 +66,7 @@ valign = 1
 margin_top = 542.0
 margin_right = 958.0
 margin_bottom = 809.0
+mouse_filter = 0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 custom_fonts/font = SubResource( 4 )
@@ -74,3 +80,10 @@ margin_right = 958.0
 margin_bottom = 1080.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 1 )
+volume_db = -3.0
+bus = "Music"
+[connection signal="gui_input" from="VBoxContainer/Play" to="." method="play_input"]
+[connection signal="gui_input" from="VBoxContainer/Quit" to="." method="quit_input"]

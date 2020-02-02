@@ -38,7 +38,5 @@ window/stretch/aspect="expand"
 
 [rendering]
 
-quality/directional_shadow/size=8192
-quality/shadows/filter_mode=2
-quality/filters/msaa=1
+environment/default_clear_color=Color( 0.0196078, 0.0196078, 0.0196078, 1 )
 environment/default_environment="res://default_env.tres"

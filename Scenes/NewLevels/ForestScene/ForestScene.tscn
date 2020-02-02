@@ -54,7 +54,6 @@ ambient_light_color = Color( 0, 0.505882, 1, 1 )
 ambient_light_sky_contribution = 0.85
 tonemap_mode = 3
 tonemap_exposure = 0.69
-dof_blur_far_enabled = true
 dof_blur_far_distance = 1.5
 dof_blur_far_transition = 10.0
 glow_enabled = true
@@ -72,7 +71,7 @@ ProgressBar/icons/WhiteProgressBar = null
 ProgressBar/styles/bg = null
 ProgressBar/styles/fg = SubResource( 9 )
 
-[sub_resource type="GIProbeData" id=12]
+[sub_resource type="GIProbeData" id=11]
 bounds = AABB( -4.35467, -3.05925, -3.67763, 8.70933, 6.1185, 7.35527 )
 cell_size = 0.0680417
 to_cell_xform = Transform( 14.6969, 0, 0, 0, 14.6969, 0, 0, 0, 14.6969, 64, 44.9614, 54.0496 )
@@ -169,10 +168,10 @@ directional_shadow_split_1 = 0.05
 directional_shadow_split_2 = 0.15
 directional_shadow_split_3 = 0.3
 directional_shadow_blend_splits = true
-directional_shadow_depth_range = 1
-directional_shadow_max_distance = 35.0
+directional_shadow_normal_bias = 0.03
+directional_shadow_max_distance = 30.0
 
 [node name="GIProbe" type="GIProbe" parent="." index="10"]
 visible = false
 extents = Vector3( 4.35467, 3.05925, 3.67763 )
-data = SubResource( 12 )
+data = SubResource( 11 )

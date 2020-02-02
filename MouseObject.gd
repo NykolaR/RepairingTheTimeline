@@ -31,6 +31,9 @@ func input_event(camera: Node, event: InputEvent, click_position: Vector3, click
 			moving = true
 
 func _mouse_entered() -> void:
+	if TimeLord.is_simulating:
+		return
+	
 	if has_node("MeshInstance"):
 		var mesh = get_node("MeshInstance") as MeshInstance
 		
